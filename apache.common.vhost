@@ -1,0 +1,20 @@
+# NameVirtualHost *:80
+<VirtualHost *:80>
+
+    DocumentRoot /path/to/application/webroot
+    ServerName myapp.com
+    ServerAlias www.myapp.com
+    ServerAdmin webmaster@myapp.com
+    DirectoryIndex index.php index.html index.htm
+
+    ErrorLog /var/log/apache2/myapp.com-error_log
+    TransferLog /var/log/apache2/myapp.com-access_log
+    CustomLog /var/log/apache2/myapp.com-access_log combined
+
+    # Other directives here
+    <Directory "/path/to/application/webroot">
+        AllowOverride Options FileInfo Limit
+    </Directory>
+
+</VirtualHost>
+
