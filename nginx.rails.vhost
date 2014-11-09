@@ -1,0 +1,21 @@
+server {
+    listen      *:80;
+    server_name myapp.com;
+    access_log  /var/log/nginx/myapp.com.access.log;
+    error_log   /var/log/nginx/myapp.com.error.log;
+    rewrite_log on;
+
+    # Pass the requests to a Rails web server (e.g. WEBrick) and its port
+    # listening on 127.0.0.1:3000
+    location / {
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header Host $http_host;
+        proxy_pass   http://127.0.0.1:3000;
+    }
+
+    location ~ \.$ {
+        proxy_set_header   X-Real-IP        $remote_addr;
+        proxy_set_header Host $http_host;
+        proxy_pass   http://127.0.0.1:3000;
+    }
+}
