@@ -4,8 +4,6 @@ server {
     access_log  /var/log/nginx/myapp.com.access.log;
     error_log   /var/log/nginx/myapp.com.error.log;
     rewrite_log on;
-    # root        /path/to/application/webroot;
-    # index       index.php index.html index.htm;
 
     # Pass the requests to node web server
     # listening on 127.0.0.1:1337
